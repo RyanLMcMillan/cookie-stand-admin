@@ -3,10 +3,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CreateForm from '../components/CreateForm';
 import ReportTable from '../components/ReportTable';
+import SignIn from '../components/SignIn';
 import { useState } from 'react';
+import { useAuth } from '../contexts/auth';
+import useResource from '../hooks/useResource';
 
 export default function Home() {
     const [stands, setStands] = useState('');
+    const { user, login, logout } = useAuth();
+    const { resources, loading, createResource, deleteResource } = useResource();
 
     function createStandHandler(event) {
         event.preventDefault();
@@ -23,16 +28,28 @@ export default function Home() {
         event.target.reset();
     }
 
+    function handleClick(event) {
+        event.preventDefault();
+        login(event.target.username.value, event.target.password.value)
+    }
+
     return (
         <div>
             <Head>
                 <title>Cookie Stand Admin</title>
             </Head>
-            <Header />
-            <main className='flex flex-col items-center p-8 space-y-8 bg-emerald-100'>
-                <CreateForm onSubmit={createStandHandler} />
-                <ReportTable stands={stands} />
-            </main>
+            <Header logout={logout} />
+            {user ? (
+                <main className='bg-emerald-50 p-8 flex flex-col items-center space-y-8'>
+                    <CreateForm onSubmit={createStandHandler} />
+                    <ReportTable stands={stands} />
+                </main>
+            ) : (
+                <main>
+                    <SignIn handleClick={handleClick} />
+                </main>
+            )
+            }
             <Footer stands={stands.length} />
         </div>
     );
