@@ -1,4 +1,4 @@
-# Lab -Class 37
+# Lab -Class 37, 38, & 39
 ## Project - Cookie Stand Admin
 ### Author: Ryan McMillan
 
@@ -28,6 +28,15 @@ module.exports = {
 @tailwind components;
 @tailwind utilities;
 npm run dev
+```
+
+- Login & pw
+  - admin
+
+- ENV REQUIREMENTS
+```
+NEXT_PUBLIC_API_URL=(insert link here)
+NEXT_PUBLIC_RESOURCE_URL=(insert link here)
 ```
 
 ### Collaborators 
