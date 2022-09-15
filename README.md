@@ -2,6 +2,9 @@
 ## Project - Cookie Stand Admin
 ### Author: Ryan McMillan
 
+## Deployed Site
+- [Click Here](https://cookie-stand-admin-omega-nine.vercel.app/)
+
 ## Setup 
 Tailwind
 
